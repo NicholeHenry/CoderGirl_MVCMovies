@@ -32,16 +32,18 @@ namespace CoderGirl_MVCMovies.Controllers
             return View();
         }
 
-        // TODO: Create a view MovieRating/Create and put the htmlForm there. Remember that html in a view should not be a string. 
+        // TODO: Create a view MovieRating/Create and put the htmlForm there. Remember that html in a view should not be a string.
+        // TODO: Change the input tag for movie name to be a drop down which has a list of movies from the movie repository
         // TODO: Change this method to return that view. 
         [HttpGet]
         public IActionResult Create()
         {
-            return Content(htmlForm, "text/html");
+            ViewBag.Movies = MovieController.movies;
+            return View();
         }
 
         // TODO: Save the movie/rating in the MovieRatingRepository before redirecting to the Details page
-        // TODO: Redirect passing only the id of the created movie/rating
+        // TODO: Redirect passing the values for the movieName and rating
         [HttpPost]
         public IActionResult Create(string movieName, string rating)
         {

@@ -15,15 +15,15 @@ namespace CoderGirl_MVCMovies.Data
         /// <param name="movieName"></param>
         /// <param name="rating"></param>
         /// <returns></returns>
-        int SaveRating(string movieName, string rating);
+        int SaveRating(string movieName, int rating);
 
         /// <summary>
         /// Given an id, will return the associated rating 
-        /// If the id does not exist, returns null
+        /// If the id does not exist, returns 0
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        string GetRatingById(int id);
+        int GetRatingById(int id);
 
         /// <summary>
         /// Given an id, will return the associated movie name.
@@ -39,7 +39,7 @@ namespace CoderGirl_MVCMovies.Data
         /// </summary>
         /// <param name="movieName"></param>
         /// <returns></returns>
-        List<string> GetAverageRatingByMovieName(string movieName);
+        double GetAverageRatingByMovieName(string movieName);
 
         /// <summary>
         /// Returns a list of all the ids of saved movie ratings
