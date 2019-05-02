@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace CoderGirl_MVCMovies.Data
@@ -24,6 +25,7 @@ namespace CoderGirl_MVCMovies.Data
         /// <param name=""></param>
         /// <returns></returns>
         int GetRatingById(int id);
+       // double GetAverageRatingByMovieName(string movieName);
 
         /// <summary>
         /// Given an id, will return the associated movie name.
