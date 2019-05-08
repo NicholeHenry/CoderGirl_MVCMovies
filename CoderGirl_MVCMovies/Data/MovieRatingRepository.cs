@@ -8,32 +8,35 @@ namespace CoderGirl_MVCMovies.Data
 {
     public class MovieRatingRepository : IMovieRatingRepository
     {
-        static List<MovieRating> movieRating = new List<MovieRating>();
-        static int nextId = 1;
+        static List<MovieRating> movieRatings = new List<MovieRating>();
+        private static int nextId = 1;
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            movieRatings.RemoveAll(m => m.Id == id);
         }
 
         public MovieRating GetById(int id)
         {
-            throw new NotImplementedException();
+            return movieRatings.SingleOrDefault(m => m.Id == id);
         }
 
         public List<MovieRating> GetMovieRatings()
         {
-            throw new NotImplementedException();
+            return movieRatings;
         }
 
         public int Save(MovieRating movieRating)
         {
-            throw new NotImplementedException();
+            movieRating.Id = nextId ++;
+            movieRatings.Add(movieRating);
+            return movieRating.Id;
         }
 
         public void Update(MovieRating movie)
         {
-            throw new NotImplementedException();
+            this.Delete(movie.Id);
+            
         }
     }
 }

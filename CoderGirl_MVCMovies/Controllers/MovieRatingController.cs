@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CoderGirl_MVCMovies.Data;
+using CoderGirl_MVCMovies.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoderGirl_MVCMovies.Controllers
@@ -13,8 +14,9 @@ namespace CoderGirl_MVCMovies.Controllers
 
        public IActionResult Index()
         {
+            List<MovieRating> movieRatings = movieRatingRepository.GetMovieRatings();
             
-            return View();
+            return View(movieRatings);
         }
 
         [HttpGet]
@@ -24,11 +26,11 @@ namespace CoderGirl_MVCMovies.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(string movieName, string rating)
+        public IActionResult Create(MovieRating movieRating)
         {
-            return RedirectToAction(actionName: nameof(Details), routeValues: new { movieName, rating });
+            movieRatingRepository.Save(movieRating);
+            return RedirectToAction(actionName: nameof(Index));
         }
-
         [HttpGet]
         public IActionResult Details(string movieName, string rating)
         {
