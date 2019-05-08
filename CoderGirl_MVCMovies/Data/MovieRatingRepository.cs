@@ -28,8 +28,12 @@ namespace CoderGirl_MVCMovies.Data
 
         public int Save(MovieRating movieRating)
         {
-            
+            throw new NotImplementedException();
         }
 
+        public void Update(MovieRating movie)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
