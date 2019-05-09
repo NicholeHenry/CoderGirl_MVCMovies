@@ -26,17 +26,22 @@ namespace CoderGirl_MVCMovies.Data
             return movieRatings;
         }
 
-        public int Save(MovieRating mo)
+        public int Save(MovieRating movieRating)
         {
-            movie.Id = nextId++;
-            movieRatings.Add(movie);
-            return movie.Id;
+            movieRating.Id = nextId++;
+            movieRatings.Add(movieRating);
+            return movieRating.Id;
         }
 
-        public void Update(MovieRating movie)
+        public void Update(MovieRating movieRating)
         {
-            this.Delete(movie.Id);
-            
+           
+            this.Delete(movieRating.Id);
+            movieRatings.Add(movieRating);
+
         }
+
+       
     }
 }
+
