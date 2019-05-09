@@ -3,11 +3,11 @@
     ViewData["Title"] = "Rate Movie";
 }
 
-<h1>View</h1>
+
 
 <h1>Rate a Movie</h1>
-<form method ='post'>
-    <select asp-for="MovieName ">
+<form method='post'>
+    <select asp-for="MovieName">
         @foreach (var name in ViewBag.MovieNames)
         {
             <option>@name</option>
@@ -22,3 +22,6 @@
     </select>
     <button type='submit'>Rate it</button>
 </form>
+
+
+
