@@ -7,13 +7,13 @@
 
 <h1>Rate a Movie</h1>
 <form method='post'>
-    <select>
-        @foreach (var movieRating in Model)
+    <select asp-for="MovieNames ">
+        @foreach (var name in ViewBag.MovieName)
         {
-            <option>@movieRating.MovieName</option>
+            <option>@name</option>
         }
     </select>
-    <select name="rating">
+    <select asp-for="rating">
         <option>1</option>
         <option>2</option>
         <option>3</option>
