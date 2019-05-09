@@ -8,9 +8,9 @@
 <h1>Rate a Movie</h1>
 <form method='post'>
     <select>
-        @foreach (var movieName in ViewBag.MovieRating)
+        @foreach (var movieRating in Model)
         {
-            <option>@movieName</option>
+            <option>@movieRating.MovieName</option>
         }
     </select>
     <select name="rating">
