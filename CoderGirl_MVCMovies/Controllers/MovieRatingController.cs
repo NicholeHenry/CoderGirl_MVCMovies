@@ -34,6 +34,21 @@ namespace CoderGirl_MVCMovies.Controllers
             movieRatingRepository.Save(movieRating);
             return RedirectToAction(actionName: nameof(Index));
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            MovieRating movieRating = movieRatingRepository.GetById(id);
+            return View(movieRating);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, MovieRating movieRatings)
+        {
+            movieRatings.Id = id;
+            movieRatingRepository.Update(movieRatings);
+            return RedirectToAction(actionName: nameof(Index));
+        }
         [HttpGet]
         public IActionResult Details(string movieName, string rating)
         {
