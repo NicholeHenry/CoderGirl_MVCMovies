@@ -56,5 +56,12 @@ namespace CoderGirl_MVCMovies.Controllers
             ViewBag.Rating = rating;
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            movieRatingRepository.Delete(id);
+            return RedirectToAction(actionName: nameof(Index));
+        }
     }
 }
