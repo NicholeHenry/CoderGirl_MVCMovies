@@ -1,0 +1,23 @@
+﻿@model List<CoderGirl_MVCMovies.Models.Director>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table>
+    <tr id="director.Id">
+        <th>Name</th>
+        <th>BirthDate</th>
+        <th>Nationality</th>
+    </tr>
+    @foreach(var director in Model)
+    {
+        <tr id="director.Id">
+            <td>@director.LastName</td>
+            <td>@director.BirthDate</td>
+            <td>@director.Nationality</td>
+        </tr>
+       
+    }
+</table>
