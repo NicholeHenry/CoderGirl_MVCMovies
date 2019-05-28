@@ -26,7 +26,8 @@ namespace CoderGirl_MVCMovies.Controllers
         public IActionResult Create(Director directors)
         {
             directorRepository.Save(directors);
-            return RedirectToAction(actionName: nameof(Index));
+            return RedirectToAction
+                (controllerName: nameof(Director), actionName: nameof(Index));
         }
 
         [HttpGet]

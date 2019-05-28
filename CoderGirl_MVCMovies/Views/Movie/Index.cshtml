@@ -5,23 +5,41 @@
 }
 
 <h1>Movies</h1>
-<a asp-controller="Movie" asp-action="Create">Add New Movie</a>
+<a id ="add-new-movie"asp-controller="Movie" asp-action="Create">Add New Movie</a>
 <table>
     <tr>
-        <th>Movie Name</th>
+        <th> Name</th>
         <th>Director</th>
         <th>Year</th>
+        <th>Average Rating</th>
+        <th>Number of Ratings</th>
     </tr>
     @foreach (var movie in Model)
     {
-    <tr>
+    <tr type="hidden" id="movie.Id">
         <td>@movie.Name</td>
         <td>@movie.DirectorName</td>
         <td>@movie.Year</td>
-        <td><a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.Id">Edit</a></td>
+        @if (movie.RatingCount == 0)
+        {
+            <td>None</td>
+        }
+        else
+        {
+            <td>@movie.AverageRating</td>
+        }
+        @if (movie.RatingCount == 0)
+        {
+            <td>0</td>
+        }
+        else
+        {
+        <td>@movie.RatingCount</td>
+        }
+        <td><a asp-controller="Movie" asp-action="Create" asp-route-id="@movie.Id">Edit</a></td>
         <td><a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id">Delete</a></td>
-        <td><a asp-controller="Movie" asp-action="Rate" asp-route-id="@movie.Id">Rate</a></td>
-        
+        <td><a asp-controller="MovieRating" asp-action="Create" asp-route-movieid="@movie.Id">Rate</a></td>
+
     </tr>
     }
 </table>

@@ -3,18 +3,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Directors</h1>
+<a id="add-new-director" asp-action="Create">Add a Director</a>
 
 <table>
-    <tr id="director.Id">
+    <tr id="director.id" height="20">
         <th>Name</th>
-        <th>BirthDate</th>
+        <th>Birth Date</th>
         <th>Nationality</th>
     </tr>
     @foreach(var director in Model)
     {
         <tr id="director.Id">
             <td>@director.LastName</td>
+           <td>@director.FirstName</td>
             <td>@director.BirthDate</td>
             <td>@director.Nationality</td>
         </tr>

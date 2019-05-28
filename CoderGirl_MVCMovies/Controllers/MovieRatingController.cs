@@ -6,6 +6,7 @@ using CoderGirl_MVCMovies.Data;
 using CoderGirl_MVCMovies.Models;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace CoderGirl_MVCMovies.Controllers
 {
     public class MovieRatingController : Controller
@@ -30,14 +31,14 @@ namespace CoderGirl_MVCMovies.Controllers
         public IActionResult Create(MovieRating movieRating)
         {
             ratingRepository.Save(movieRating);
-            return RedirectToAction(actionName: nameof(Index));
+            return RedirectToAction(controllerName:nameof(Movie), actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
             MovieRating movieRating = ratingRepository.GetById(id);
-            return View(movieRating);
+            return View();
         }
 
         [HttpPost]
@@ -45,7 +46,7 @@ namespace CoderGirl_MVCMovies.Controllers
         {
             movieRating.Id = id;
             ratingRepository.Update(movieRating);
-            return RedirectToAction(actionName: nameof(Index));
+            return RedirectToAction(controllerName: nameof(Movie), actionName: nameof(Index));
         }
 
         [HttpGet]

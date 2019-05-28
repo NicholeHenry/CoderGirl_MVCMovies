@@ -8,17 +8,17 @@ namespace CoderGirl_MVCMovies.Data
 {
     public class DirectorRepository: IDirectorRepository
     {
-        static List<Director> directors = new List<Director>();
+        static List<Director> directors= new List<Director>();
         static int nextId = 1;
         static IDirectorRepository directorRepository = RepositoryFactory.GetDirectorRepository();
         public void Delete(int id)
         {
-            directors.RemoveAll(director => director.Id == id);
+            directors.RemoveAll(r => r.Id == id);
         }
 
         public Director GetById(int id)
         {
-            return directors.SingleOrDefault(d => d.Id == id);
+            return directors.SingleOrDefault(m => m.Id == id);
         }
 
         public List<Director> GetDirector()
@@ -31,7 +31,7 @@ namespace CoderGirl_MVCMovies.Data
             director.Id = nextId++;
             directors.Add(director);
             return director.Id;
-
+           
         }
 
         public void Update(Director director)

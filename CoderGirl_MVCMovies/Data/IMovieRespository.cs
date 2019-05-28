@@ -17,5 +17,12 @@ namespace CoderGirl_MVCMovies.Data
         void Update(Movie movie);
 
         void Delete(int id);
+
+       
+
+
+        
+
+        
     }
 }
