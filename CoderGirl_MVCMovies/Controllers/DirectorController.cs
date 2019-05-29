@@ -20,7 +20,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return RedirectToAction(controllerName: nameof(Director), actionName: nameof(Index));
+            return View();
         }
         [HttpPost]
         public IActionResult Create(Director director)
