@@ -18,7 +18,8 @@ namespace CoderGirl_MVCMovies.Data
 
         public Director GetById(int id)
         {
-            return directors.SingleOrDefault(m => m.Id == id);
+            Director director = directors.SingleOrDefault(d => d.Id == id);
+            return director;
         }
 
         public List<Director> GetDirector()

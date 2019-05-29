@@ -1,22 +1,22 @@
 ﻿@model List<CoderGirl_MVCMovies.Models.Director>
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Directors";
 }
 
 <h1>Directors</h1>
 <a id="add-new-director" asp-action="Create">Add a Director</a>
 
 <table>
-    <tr id="director.id" height="20">
+    <tr>
         <th>Name</th>
         <th>Birth Date</th>
         <th>Nationality</th>
     </tr>
     @foreach(var director in Model)
     {
-        <tr id="director.Id">
-            <td>@director.LastName</td>
-           <td>@director.FirstName</td>
+        <tr id="@director.Id">
+            <td>@director.LastAndFirstName</td>
+           
             <td>@director.BirthDate</td>
             <td>@director.Nationality</td>
         </tr>
