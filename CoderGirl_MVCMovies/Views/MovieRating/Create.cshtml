@@ -7,11 +7,9 @@
 <h1>Rate a Movie</h1>
 <form method='post'>
 
+    <input readonly asp-for="MovieName" value="@Model.MovieName" />
 
-
-    <input readonly asp-for="MovieName" type="text"value="@ViewBag.movie.Name" />
-
-
+   
     <select asp-for="Rating">
         <option>1</option>
         <option>2</option>
