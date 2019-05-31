@@ -29,7 +29,7 @@ namespace CoderGirl_MVCMovies.Controllers
 
             movieRatings.MovieId = movieId;
             movieRatings.MovieName = MovieName;
-            return View(MovieName);
+            return View(movieRatings);
         }
 
        
