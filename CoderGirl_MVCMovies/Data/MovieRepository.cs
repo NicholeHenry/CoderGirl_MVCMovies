@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using CoderGirl_MVCMovies.Models;
 namespace CoderGirl_MVCMovies.Data
 {
-    public class MovieRepository : IMovieRespository
+    public class MovieRepository : IMovieRepository
     {
         static List<Movie> movies= new List<Movie>();
         static int nextId = 1;

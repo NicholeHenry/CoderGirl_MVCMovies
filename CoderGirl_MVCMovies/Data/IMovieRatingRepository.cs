@@ -17,17 +17,18 @@ namespace CoderGirl_MVCMovies.Data
         /// <param name="movieName"></param>
         /// <param name="rating"></param>
         /// <returns></returns>
-        int SaveRating(string movieName, int rating);
-
+        int Save(MovieRating movieRating);
+        double GetAverageRating(int movieId);
         /// <summary>
         /// Given an id, will return the associated rating 
         /// If the id does not exist, returns 0
         /// </summary>
         /// <param name=""></param>
         /// <returns></returns>
-        int GetRatingById(int id);
-        void Save(MovieRating movieRating);
-        MovieRating GetById(int id);
+        int GetRatingCount(int movieId);
+        
+
+            MovieRating GetById(int id);
 
         // double GetAverageRatingByMovieName(string movieName);
 
@@ -37,7 +38,7 @@ namespace CoderGirl_MVCMovies.Data
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        string GetMovieNameById(int id);
+        
         void Update(MovieRating movieRating);
         void Delete(int id);
 
@@ -47,13 +48,11 @@ namespace CoderGirl_MVCMovies.Data
         /// </summary>
         /// <param name="movieName"></param>
         /// <returns></returns>
-        double GetAverageRatingByMovieName(string movieName);
-
-        /// <summary>
+       
         /// Returns a list of all the ids of saved movie ratings
         /// </summary>
         /// <returns></returns>
-        List<int> GetIds();
+        
         List<MovieRating> GetMovieRatings();
     }
 }
