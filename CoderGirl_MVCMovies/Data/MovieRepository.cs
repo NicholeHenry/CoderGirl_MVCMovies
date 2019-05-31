@@ -22,7 +22,7 @@ namespace CoderGirl_MVCMovies.Data
             
         }
 
-        public List<Movie> GetMovies()
+        public List<Movie> GetMovie()
         {
             movies= movies.Select(movie => SetMovieRatings(movie)).ToList();
             movies = movies.Select(movie => SetAverageRating(movie)).ToList();

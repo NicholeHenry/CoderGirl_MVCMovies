@@ -54,7 +54,7 @@ namespace CoderGirl_MVCMovies
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Movie}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

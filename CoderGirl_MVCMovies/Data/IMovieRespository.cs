@@ -10,7 +10,7 @@ namespace CoderGirl_MVCMovies.Data
     {
         int Save(Movie movie);
 
-        List<Movie> GetMovies();
+        List<Movie> GetMovie();
 
         Movie GetById(int id);
 

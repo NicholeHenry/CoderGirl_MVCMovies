@@ -12,7 +12,7 @@ namespace CoderGirl_MVCMovies.Models
         public string LastName { get; set; }
         public string LastAndFirstName
         {
-            get { return LastName + " " + FirstName; }
+            get { return LastName + ", " + FirstName; }
             
         }
         [DataType(DataType.Date)]
