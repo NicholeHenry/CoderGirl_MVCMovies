@@ -18,8 +18,15 @@ namespace CoderGirl_MVCMovies.Data
 
         public Movie GetById(int id)
         {
-            return movies.SingleOrDefault(m => m.Id == id);
-            
+            Movie movie =  movies.SingleOrDefault(m => m.Id == id);
+            movie = SetMovieRatings(movie);
+            movie = SetDirector(movie);
+            movie.AverageRating = ratingRepository.GetAverageRating(movie.Id);
+
+            movie.RatingCount = ratingRepository.GetRatingCount(movie.Id);
+
+            return movie;
+
         }
 
         public List<Movie> GetMovie()
