@@ -11,7 +11,7 @@ namespace CoderGirl_MVCMovies.Data
     {
         private static List<MovieRating> movieRatings = new List<MovieRating>();
         private static int nextId = 1;
-        static IMovieRatingRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
+        static IMovieRatingRepository movieRatingRepository = RepositoryFactory.GetMovieRatingRepository();
         public void Delete(int id)
         {
             movieRatings.RemoveAll(r => r.Id == id);

@@ -9,7 +9,7 @@ namespace CoderGirl_MVCMovies.Data
     {
         static List<Movie> movies= new List<Movie>();
         static int nextId = 1;
-        static IMovieRatingRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
+        static IMovieRatingRepository movieRatingRepository = RepositoryFactory.GetMovieRatingRepository();
         static IDirectorRepository directorRepository = RepositoryFactory.GetDirectorRepository();
         public void Delete(int id)
         {
@@ -21,9 +21,9 @@ namespace CoderGirl_MVCMovies.Data
             Movie movie =  movies.SingleOrDefault(m => m.Id == id);
             movie = SetMovieRatings(movie);
             movie = SetDirector(movie);
-            movie.AverageRating = ratingRepository.GetAverageRating(movie.Id);
+            movie.AverageRating = movieRatingRepository.GetAverageRating(movie.Id);
 
-            movie.RatingCount = ratingRepository.GetRatingCount(movie.Id);
+            movie.RatingCount = movieRatingRepository.GetRatingCount(movie.Id);
 
             return movie;
 
@@ -31,7 +31,8 @@ namespace CoderGirl_MVCMovies.Data
 
         public List<Movie> GetMovie()
         {
-            movies= movies.Select(movie => SetMovieRatings(movie)).ToList();
+            
+            movies = movies.Select(movie => SetMovieRatings(movie)).ToList();
             movies = movies.Select(movie => SetAverageRating(movie)).ToList();
             movies = movies.Select(movie => SetRatingCount(movie)).ToList();
             movies = movies.Select(movie => SetDirector(movie)).ToList();
@@ -39,6 +40,7 @@ namespace CoderGirl_MVCMovies.Data
 
         }
 
+        
 
         public int Save(Movie movie)
         {
@@ -55,7 +57,7 @@ namespace CoderGirl_MVCMovies.Data
 
         private Movie SetMovieRatings(Movie movies)
         {
-            List<int> ratings = ratingRepository.GetMovieRatings()
+            List<int> ratings = movieRatingRepository.GetMovieRatings()
                                                 .Where(rating => rating.MovieId == movies.Id)
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
@@ -82,13 +84,13 @@ namespace CoderGirl_MVCMovies.Data
 
         private Movie SetAverageRating(Movie movie)
         {
-            movie.AverageRating = ratingRepository.GetAverageRating(movie.Id);
+            movie.AverageRating = movieRatingRepository.GetAverageRating(movie.Id);
             return movie;
         }
 
         private Movie SetRatingCount(Movie movie)
         {
-            movie.RatingCount = ratingRepository.GetRatingCount(movie.Id);
+            movie.RatingCount = movieRatingRepository.GetRatingCount(movie.Id);
             return movie;
         }
     }
