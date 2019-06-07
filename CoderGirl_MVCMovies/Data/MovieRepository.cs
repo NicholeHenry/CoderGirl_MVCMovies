@@ -55,16 +55,16 @@ namespace CoderGirl_MVCMovies.Data
             movies.Add(movie);
         }
 
-        private Movie SetMovieRatings(Movie movies)
+        private Movie SetMovieRatings(Movie movie)
         {
             List<int> ratings = movieRatingRepository.GetMovieRatings()
-                                                .Where(rating => rating.MovieId == movies.Id)
+                                                .Where(rating => rating.MovieId == movie.Id)
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
-            movies.Ratings = ratings;
+            movie.Ratings = ratings;
 
            
-            return movies;
+            return movie;
         }
 
         private Movie SetDirector(Movie movie)

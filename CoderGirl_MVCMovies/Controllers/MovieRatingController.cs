@@ -23,7 +23,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create(int id)
         {
-            ViewBag.movie = movieRepository.GetById(id);
+            ViewBag.Name = movieRepository.GetMovie().Select(m=> m.Name).ToList();
             return View();
                 
                 
