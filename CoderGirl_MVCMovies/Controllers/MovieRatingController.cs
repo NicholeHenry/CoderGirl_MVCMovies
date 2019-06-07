@@ -23,12 +23,15 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.movie.Name = movieRepository.GetMovie().Select(m=> m.Name).ToList();
-            return View();
-                
-                
-
+            var movie = (Movie)movieRespository.GetById(movieId);
+            string movieName = movie.Name;
+            MovieRating movieRating = new MovieRating();
+            movieRating.MovieId = movieId;
+            movieRating.MovieName = movieName;
+            return View(movieRating);
         }
+
+    }
 
         
     
