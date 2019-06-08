@@ -40,7 +40,12 @@ namespace CoderGirl_MVCMovies.Data
 
         }
 
-        
+        public string GetMovieName(Movie movie)
+        {
+            string name = movies.Select(m => m.Name).ToString();
+            return name;
+                
+        }
 
         public int Save(Movie movie)
         {
