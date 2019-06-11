@@ -40,9 +40,9 @@ namespace CoderGirl_MVCMovies.Data
 
         }
 
-        public string GetMovieName(Movie movie)
+        public string GetMovieName(int id)
         {
-            string name = movies.Select(m => m.Name).ToString();
+            string name = movies.Where(m => m.Id == id).Select(m => m.Name).ToString();
             return name;
                 
         }

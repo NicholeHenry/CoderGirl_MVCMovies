@@ -7,8 +7,7 @@
 <h1>Rate a Movie</h1>
 <form method='post'>
 
-    <input  asp-for="MovieId" name="Movie Name" value="@ViewBag.Name" readonly>
-    
+    <input type="text" asp-for="MovieName" name="MovieName" value="@ViewBag.Name" readonly>
     <select asp-for="Rating">
         <option>1</option>
         <option>2</option>
