@@ -10,12 +10,12 @@ namespace CoderGirl_MVCMovies.Controllers
 {
     public class MovieController : Controller
     {
-        static IRepository movieRepository = RepositoryFactory.GetMovieRepository();
+        static IRepository BaseRepository = RepositoryFactory.GetMovieRepository();
         static IRepository directorRepository = RepositoryFactory.GetDirectorRepository();
 
         public IActionResult Index()
         {
-            List<Movie> movies = movieRepository.GetModels().Cast<Movie>().ToList();
+            List<Movie> movies = BaseRepository.GetModels().Cast<Movie>().ToList();
             return View(movies);
         }
 
@@ -29,29 +29,21 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(Movie movie)
         {
-            if (String.IsNullOrWhiteSpace(movie.Name))
+            if (ModelState.IsValid)
             {
-                ModelState.AddModelError("Name", "Name must be included");
+                ViewBag.Name = movie.Name;
+                ViewBag.Year = movie.Year;
             }
-            if(movie.Year < 1888 || movie.Year > DateTime.Now.Year)
-            {
-                ModelState.AddModelError("Year", "Year is not valid");
-            }
+            
 
-            if(ModelState.ErrorCount > 0)
-            {
-                ViewBag.Directors = directorRepository.GetDirectors();
-                return View(movie);
-            }
-
-            movieRepository.Save(movie);
+            BaseRepository.Save(movie);
             return RedirectToAction(actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Movie movie = movieRepository.GetById(id);
+            Movie movie = BaseRepository.GetById(id);
             return View(movie);
         }
 
@@ -62,14 +54,14 @@ namespace CoderGirl_MVCMovies.Controllers
             //there are alternative patterns for doing this - for one, you could include the id in the form but make it hidden
             //feel free to experiment - the tests wont' care as long as you preserve the id correctly in some manner
             movie.Id = id; 
-            movieRepository.Update(movie);
+            BaseRepository.Update(movie);
             return RedirectToAction(actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            movieRepository.Delete(id);
+            BaseRepository.Delete(id);
             return RedirectToAction(actionName: nameof(Index));
         }
     }

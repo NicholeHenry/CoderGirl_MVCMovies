@@ -38,5 +38,10 @@ namespace CoderGirl_MVCMovies.Data
             this.Delete(model.Id);
             models.Add(model);
         }
+
+        public dynamic GetDirectors()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace CoderGirl_MVCMovies.Data
         int Save(IModel model);
         void Delete(int id);
         void Update(IModel model);
+        dynamic GetDirectors();
     }
 }
