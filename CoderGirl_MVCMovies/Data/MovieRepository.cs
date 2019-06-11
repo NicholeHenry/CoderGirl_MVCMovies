@@ -18,6 +18,7 @@ namespace CoderGirl_MVCMovies.Data
 
         public Movie GetById(int id)
         {
+           
             Movie movie =  movies.SingleOrDefault(m => m.Id == id);
             movie = SetMovieRatings(movie);
             movie = SetDirector(movie);
