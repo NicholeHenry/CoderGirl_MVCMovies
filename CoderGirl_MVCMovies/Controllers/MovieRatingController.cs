@@ -10,7 +10,7 @@ namespace CoderGirl_MVCMovies.Controllers
 {
     public class MovieRatingController : Controller
     {
-        private IMovieRatingRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
+        private IRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
         private IMovieRespository movieRespository = RepositoryFactory.GetMovieRepository();
 
        public IActionResult Index()
