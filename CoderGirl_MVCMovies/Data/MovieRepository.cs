@@ -41,12 +41,7 @@ namespace CoderGirl_MVCMovies.Data
 
         }
 
-        public string GetMovieName(int id)
-        {
-            string name = movies.Where(m => m.Id == id).Select(m => m.Name).ToString();
-            return name;
-                
-        }
+       
 
         public int Save(Movie movie)
         {

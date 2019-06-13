@@ -18,8 +18,7 @@ namespace CoderGirl_MVCMovies.Data
 
         void Delete(int id);
 
-        string GetMovieName(int id);
-
+        
 
         
 
