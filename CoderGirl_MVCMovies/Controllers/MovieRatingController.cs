@@ -24,11 +24,11 @@ namespace CoderGirl_MVCMovies.Controllers
         public IActionResult Create(int movieId)
 
         {
-            if (movieId == d) {
-                string name = ViewBag.movie.Name;
-            }
-            return View(ViewBag.movie.Name);
-            
+            string movieName = movieRepository.GetById(movieId).Name;
+            MovieRating movieRating = new MovieRating();
+            movieRating.MovieId = movieId;
+            movieRating.MovieName = movieName;
+            return View(movieRating);
         }
 
     
