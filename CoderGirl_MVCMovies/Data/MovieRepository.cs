@@ -27,8 +27,8 @@ namespace CoderGirl_MVCMovies.Data
        
         private Movie SetMovieRatings(Movie movie)
         {
-            List<int> ratings = ratingRepository.GetMovieRatings()
-                                                .Where(rating => rating.MovieId == movie.Id)
+            List<int> ratings = ratingRepository.GetModels()
+                                                .Where(rating => rating.Id == movie.Id)
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
             movie.Ratings = ratings;
@@ -37,7 +37,7 @@ namespace CoderGirl_MVCMovies.Data
 
         private Movie SetDirectorName(Movie movie)
         {
-            Director director = directorRepository.GetById(movie.DirectorId);
+            Director director = BaseRepository.GetById(movie.DirectorId);
             movie.DirectorName = director.FullName;
             return movie;
         }

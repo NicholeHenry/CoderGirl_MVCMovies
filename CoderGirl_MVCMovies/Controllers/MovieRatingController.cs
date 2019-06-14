@@ -10,19 +10,19 @@ namespace CoderGirl_MVCMovies.Controllers
 {
     public class MovieRatingController : Controller
     {
-        private IRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
-        private IMovieRespository movieRespository = RepositoryFactory.GetMovieRepository();
+        static IRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
+        static IRepository BaseRepository = RepositoryFactory.GetMovieRepository();
 
        public IActionResult Index()
         {
-            List<MovieRating> movieRatings = ratingRepository.GetMovieRatings();
+            List<MovieRating> movieRatings = BaseRepository.GetModels().Cast<MovieRating>().ToList();
             return View(movieRatings);
         }
 
         [HttpGet]
         public IActionResult Create(int movieId)
         {
-            string movieName = movieRespository.GetById(movieId).Name;
+            string movieName = BaseRepository.GetById(movieId).Name;
             MovieRating movieRating = new MovieRating();
             movieRating.MovieId = movieId;
             movieRating.MovieName = movieName;
@@ -30,16 +30,16 @@ namespace CoderGirl_MVCMovies.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(int movieId, MovieRating movieRating)
+        public IActionResult Create(int id, MovieRating movieRating)
         {
-            ratingRepository.Save(movieRating);
+            BaseRepository.Save(movieRating);
             return RedirectToAction(controllerName: nameof(Movie), actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            MovieRating movieRating = ratingRepository.GetById(id);
+            MovieRating movieRating = BaseRepository.GetById(id);
             return View(movieRating);
         }
 
@@ -54,7 +54,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            ratingRepository.Delete(id);
+            BaseRepository.Delete(id);
             return RedirectToAction(actionName: nameof(Index));
         }
     }

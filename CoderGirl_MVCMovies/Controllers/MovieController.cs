@@ -43,7 +43,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Movie movie = BaseRepository.GetById(id);
+            Movie movie = (Movie)base.GetById(id);
             return View(movie);
         }
 
