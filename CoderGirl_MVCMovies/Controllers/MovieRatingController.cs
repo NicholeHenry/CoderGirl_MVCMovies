@@ -22,7 +22,8 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create(int movieId)
         {
-            string movieName = movieRepository.GetById(movieId).Name;
+            var movie = (Movie)movieRepository.GetById(movieId);
+            string movieName = movie.Name;
             MovieRating movieRating = new MovieRating();
             movieRating.MovieId = movieId;
             movieRating.MovieName = movieName;
@@ -32,14 +33,14 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(int id, MovieRating movieRating)
         {
-            BaseRepository.Save(movieRating);
+            movieRepository.Save(movieRating);
             return RedirectToAction(controllerName: nameof(Movie), actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            MovieRating movieRating = BaseRepository.GetById(id);
+            MovieRating movieRating = (MovieRating)ratingRepository.GetById(id);
             return View(movieRating);
         }
 
@@ -54,7 +55,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            BaseRepository.Delete(id);
+            movieRepository.Delete(id);
             return RedirectToAction(actionName: nameof(Index));
         }
     }
