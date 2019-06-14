@@ -21,13 +21,13 @@ namespace CoderGirl_MVCMovies.Data
 
         public override List<IModel> GetModels()
         {
-            return models.Select(movie => SetMovieRatings(movie))
+            return models.Select(movie => SetMovieRatings((Movie)movie))
                 .Select(movie => SetDirectorName(movie)).ToList();
         }
        
         private Movie SetMovieRatings(Movie movie)
         {
-            List<int> ratings = ratingRepository.GetModels().Cast<Movie>()
+            List<int> ratings = ratingRepository.GetModels().Cast<MovieRating>()
                                                 .Where(rating => rating.Id == movie.Id)
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
