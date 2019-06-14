@@ -10,7 +10,7 @@ namespace CoderGirl_MVCMovies.Controllers
 {
     public class MovieController : Controller
     {
-        static IRepository BaseRepository = RepositoryFactory.GetMovieRepository();
+        static IRepository movieRepository = RepositoryFactory.GetMovieRepository();
         static IRepository directorRepository = RepositoryFactory.GetDirectorRepository();
 
         public IActionResult Index()
@@ -43,7 +43,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Movie movie = (Movie)base.GetById(id);
+            Movie movie = (Movie)movieRepository.GetById(id);
             return View(movie);
         }
 
