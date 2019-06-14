@@ -21,7 +21,7 @@ namespace CoderGirl_MVCMovies.Data
 
         public override List<IModel> GetModels()
         {
-            return models.((Movie)movie).Select(movie => SetMovieRatings((Movie)movie))
+            return base.GetModels().Select(movie => SetMovieRatings((Movie)movie))
                 .Select(movie => SetDirectorName(movie)).ToList();
         }
        
