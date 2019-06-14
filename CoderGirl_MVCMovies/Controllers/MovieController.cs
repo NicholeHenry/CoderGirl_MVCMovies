@@ -15,14 +15,14 @@ namespace CoderGirl_MVCMovies.Controllers
 
         public IActionResult Index()
         {
-            List<Movie> movies = BaseRepository.GetModels().Cast<Movie>().ToList();
+            List<Movie> movies = movieRepository.GetModels().Cast<Movie>().ToList();
             return View(movies);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Directors = directorRepository.GetDirectors();
+            ViewBag.Directors = directorRepository.GetModels();
             return View();
         }
 
@@ -36,7 +36,7 @@ namespace CoderGirl_MVCMovies.Controllers
             }
             
 
-            BaseRepository.Save(movie);
+            movieRepository.Save(movie);
             return RedirectToAction(actionName: nameof(Index));
         }
 
@@ -54,14 +54,14 @@ namespace CoderGirl_MVCMovies.Controllers
             //there are alternative patterns for doing this - for one, you could include the id in the form but make it hidden
             //feel free to experiment - the tests wont' care as long as you preserve the id correctly in some manner
             movie.Id = id; 
-            BaseRepository.Update(movie);
+            movieRepository.Update(movie);
             return RedirectToAction(actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            BaseRepository.Delete(id);
+            movieRepository.Delete(id);
             return RedirectToAction(actionName: nameof(Index));
         }
     }
