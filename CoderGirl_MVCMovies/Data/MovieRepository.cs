@@ -21,11 +21,12 @@ namespace CoderGirl_MVCMovies.Data
 
         public override List<IModel> GetModels()
         {
-            base.GetModels().Cast<Movie>()
+           List<Movie> movies = models.Cast<Movie>()
                 .Select(movie => SetMovieRatings(movie))
                 .Select(movie => SetDirectorName(movie))
                 .ToList();
-            return models;
+            List<IModel> castModel = movies.Cast<IModel>().ToList();
+            return castmodel;
             
         }
 

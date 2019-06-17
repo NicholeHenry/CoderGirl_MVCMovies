@@ -9,7 +9,7 @@ namespace CoderGirl_MVCMovies.Models
 {
     public class Director : IModel
     {
-        public string nullInput="unknown";
+      
         public int Id { get; set; }
         [Required(ErrorMessage = "First Name must be included")]
         public string FirstName { get; set; }
@@ -17,7 +17,7 @@ namespace CoderGirl_MVCMovies.Models
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
         
-        public string? Nationality
+        public string Nationality
         {
             get;
             set;

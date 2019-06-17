@@ -28,7 +28,16 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(Director director)
         {
+            if (string.IsNullOrEmpty(director.Nationality))
+            {
+                director.Nationality = "unknown";
+            }
+            if(ModelState.ErrorCount > 0)
+            {
+                return View();
+            }
             directorRepository.Save(director);
+            
             return RedirectToAction(actionName: nameof(Index));
         }
     }
