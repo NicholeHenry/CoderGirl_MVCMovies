@@ -12,7 +12,7 @@ namespace CoderGirl_MVCMovies.Models
         [Required(ErrorMessage = "Name must be included")]
         public string Name { get; set; }
         public string DirectorName { get; set; }
-        [Required(ErrorMessage = "Year is not valid")]
+        [Required(ErrorMessage = "Not A Valid Year")]
         public int Year { get; set; }
         public List<int> Ratings { get; set; }
         public int DirectorId { get; set; }

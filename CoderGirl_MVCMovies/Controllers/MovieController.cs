@@ -36,6 +36,7 @@ namespace CoderGirl_MVCMovies.Controllers
             }
             if (ModelState.ErrorCount > 0)
             {
+                ViewBag.Director = directorRepository.GetModels();
                 return View();
             }
 
