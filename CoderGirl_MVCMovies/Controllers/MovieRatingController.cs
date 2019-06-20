@@ -33,7 +33,7 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(int id, MovieRating movieRating)
         {
-            movieRepository.Save(movieRating);
+            ratingRepository.Save(movieRating);
             return RedirectToAction(controllerName: nameof(Movie), actionName: nameof(Index));
         }
 

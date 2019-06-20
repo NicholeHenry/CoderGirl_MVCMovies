@@ -22,19 +22,22 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Directors = directorRepository.GetModels();
+            ViewBag.Director = directorRepository.GetModels();
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Movie movie)
         {
-            if (ModelState.IsValid)
+           /* if (ModelState.IsValid)
             {
                 ViewBag.Name = movie.Name;
                 ViewBag.Year = movie.Year;
+            }*/
+            if (ModelState.ErrorCount > 0)
+            {
+                return View();
             }
-            
 
             movieRepository.Save(movie);
             return RedirectToAction(actionName: nameof(Index));

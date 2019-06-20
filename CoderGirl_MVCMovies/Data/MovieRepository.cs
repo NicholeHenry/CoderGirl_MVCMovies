@@ -26,7 +26,7 @@ namespace CoderGirl_MVCMovies.Data
                 .Select(movie => SetDirectorName(movie))
                 .ToList();
             List<IModel> castModel = movies.Cast<IModel>().ToList();
-            return castmodel;
+            return castModel;
             
         }
 
@@ -34,7 +34,7 @@ namespace CoderGirl_MVCMovies.Data
         private Movie SetMovieRatings(Movie movie)
         {
             List<int> ratings = ratingRepository.GetModels().Cast<MovieRating>()
-                                                .Where(rating => rating.Id == movie.Id)
+                                                .Where(rating => rating.MovieId == movie.Id)
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
             movie.Ratings = ratings;
