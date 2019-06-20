@@ -29,11 +29,11 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(Movie movie)
         {
-           /* if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 ViewBag.Name = movie.Name;
                 ViewBag.Year = movie.Year;
-            }*/
+            }
             if (ModelState.ErrorCount > 0)
             {
                 return View();

@@ -22,6 +22,8 @@ namespace CoderGirl_MVCMovies.Models
         public string FullName
         {
             get { return $"{LastName}, {FirstName}"; }
+             
+            
         }
 
     }
