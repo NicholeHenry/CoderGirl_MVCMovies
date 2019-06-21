@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoderGirl_MVCMovies.Data;
 using CoderGirl_MVCMovies.Models;
-using CoderGirl_MVCMovies.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoderGirl_MVCMovies.Controllers
@@ -24,12 +23,12 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            MovieCreatViewModel model = MovieCreatViewModel.GetMovieCreatViewModel();
-            return View(model);
+            ViewBag.Directors = directorRepository.GetModels().Cast<Director>().ToList();
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Create(MovieCreatViewModel model)
+        public IActionResult Create(Movie movie)
         {
             if (String.IsNullOrWhiteSpace(model.Name))
             {
@@ -46,8 +45,7 @@ namespace CoderGirl_MVCMovies.Controllers
                 return View(model);
             }
 
-            // movieRepository.Save(model);
-            model.Save();
+            movieRepository.Save(movie);
             return RedirectToAction(actionName: nameof(Index));
         }
 
