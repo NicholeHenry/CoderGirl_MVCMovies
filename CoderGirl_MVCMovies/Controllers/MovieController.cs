@@ -34,6 +34,11 @@ namespace CoderGirl_MVCMovies.Controllers
                 ViewBag.Name = movie.Name;
                 ViewBag.Year = movie.Year;
             }
+            if (movie.Year < 1888 || movie.Year > DateTime.Now.Year)
+            {
+                ModelState.AddModelError("Year", "Not a valid year");
+            }
+
             if (ModelState.ErrorCount > 0)
             {
                 ViewBag.Director = directorRepository.GetModels();
