@@ -21,7 +21,7 @@
                 <label asp-for="DirectorId" class="control-label"></label>
                 <select asp-for="DirectorId">
                 @foreach(var director in Model.Directors)
-                {
+                    {
                    <option value="@director.Id" 
                 }
                 </select>
