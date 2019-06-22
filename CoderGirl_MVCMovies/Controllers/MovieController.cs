@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoderGirl_MVCMovies.Data;
 using CoderGirl_MVCMovies.Models;
+using CoderGirl_MVCMovies.ViewModels.Movies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoderGirl_MVCMovies.Controllers
@@ -15,15 +16,15 @@ namespace CoderGirl_MVCMovies.Controllers
 
         public IActionResult Index()
         {
-            List<Movie> movies = movieRepository.GetModels().Cast<Movie>().ToList();
-            return View(movies);
+            List<MovieListItemViewModel> movies = MovieListItemViewModel.GetMovieList();
             //use list but creat special class movielistview model
+            return View(movies);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Directors = directorRepository.GetModels().Cast<Director>().ToList();
+            Model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
             return View();
         }
 
