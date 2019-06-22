@@ -11,27 +11,33 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
     {
         public static List<MovieListItemViewModel> GetMovieList()
         {
-            return RepositoryFactory
-                .GetMovieRepository()
-                .GetModels().Cast<Movie>()
-                .Select(m => GetMovieListItemFromMovie(movie))
+            return RepositoryFactory.GetMovieRepository()
+                .GetModels()
+                .Cast<Movie>()
+                .Select(movie => GetMovieListItemFromMovie(movie))
                 .ToList();
 
         }
 
-        private static object GetMovieListItemFromMovie(Movie movie)
+        private static MovieListItemViewModel  GetMovieListItemFromMovie(Movie movie)
         {
-           Id = movie.Id,
-           Name = movie.Name,
-            Director = movie.DirectorName,
-            Year = movie.Year,
-            AverageR =
+            return new MovieListItemViewModel
+            {
+                Id = movie.Id,
+                Name = movie.Name,
+                DirectorName = movie.DirectorName,
+                Year = movie.Year,
+               Ratings = movie.Ratings
+            };
         }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public List<int> Ratings { get; set; }
+        public string DirectorName { get; set; }
+        public int Year { get; set; }
+
+
+
     }
 }
- <th>Movie Name</th>
-        <th>Director</th>
-        <th>Year</th>
-        <th>Average Rating</th>
-        <th>Number of Ratings</th>
-    </tr>
+ 
