@@ -30,18 +30,18 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(Movie movie)
         {
-            if (String.IsNullOrWhiteSpace(model.Name))
+            if (String.IsNullOrWhiteSpace(movie.Name))
             {
                 ModelState.AddModelError("Name", "Name must be included");
             }
-            if(model.Year < 1888 || model.Year > DateTime.Now.Year)
+            if(movie.Year < 1888 || movie.Year > DateTime.Now.Year)
             {
                 ModelState.AddModelError("Year", "Year is not valid");
             }
 
             if(ModelState.ErrorCount > 0)
             {
-                model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
+                Directors = directorRepository.GetModels().Cast<Director>().ToList();
                 return View(model);
             }
 
