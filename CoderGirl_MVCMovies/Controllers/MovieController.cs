@@ -24,29 +24,19 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            Model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
-            return View();
+            MovieCreateViewModel createMovieViewModel = new MovieCreateViewModel();
+            //model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
+            return View(createMovieViewModel);
         }
 
         [HttpPost]
-        public IActionResult Create(Movie movie)
+        public IActionResult Create(MovieCreateViewModel createMovieViewModel)
         {
-            if (String.IsNullOrWhiteSpace(movie.Name))
-            {
-                ModelState.AddModelError("Name", "Name must be included");
-            }
-            if(movie.Year < 1888 || movie.Year > DateTime.Now.Year)
-            {
-                ModelState.AddModelError("Year", "Year is not valid");
-            }
 
-            if(ModelState.ErrorCount > 0)
-            {
-               ViewBag.Directors = directorRepository.GetModels().Cast<Director>().ToList();
-                return View();
-            }
+            if (!ModelState.IsValid)
+                return View(createMovieViewModel);
 
-            movieRepository.Save(movie);
+            createMovieViewModel.Persist();
             return RedirectToAction(actionName: nameof(Index));
         }
 
