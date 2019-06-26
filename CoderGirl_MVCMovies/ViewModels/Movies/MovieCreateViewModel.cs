@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace CoderGirl_MVCMovies.ViewModels.Movies
 {
@@ -19,7 +18,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
             return new MovieCreateViewModel(directors);
         }
 
-        [Required(ErrorMessage = "Name is required")]
+
         public string Name { get; set; }
         public int DirectorId { get; set; }
         public List<Director> Directors { get; set; }
@@ -28,10 +27,6 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
         private MovieCreateViewModel(List<Director> directors)
         {
             this.Directors = directors;
-        }
-
-        public MovieCreateViewModel()
-        {
         }
 
         public void Persist()
