@@ -24,9 +24,12 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            Model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
-            return View();
+            
+            MovieCreateViewModel createMovieViewModel = new MovieCreateViewModel();
+            //model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
+            return View(createMovieViewModel);
         }
+    }
 
         [HttpPost]
         public IActionResult Create(Movie movie)
