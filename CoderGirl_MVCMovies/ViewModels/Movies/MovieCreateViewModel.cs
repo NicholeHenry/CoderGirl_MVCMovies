@@ -36,7 +36,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
             {
                 Name = this.Name,
                 DirectorId = this.DirectorId,
-                DirectorName = this.DirectorName
+                DirectorName = this.DirectorName,
                 Year = this.Year,
                
             };
