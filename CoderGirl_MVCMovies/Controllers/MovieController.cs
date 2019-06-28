@@ -6,7 +6,7 @@ using CoderGirl_MVCMovies.Data;
 using CoderGirl_MVCMovies.Models;
 using CoderGirl_MVCMovies.ViewModels.Movies;
 using Microsoft.AspNetCore.Mvc;
-
+using System.ComponentModel.DataAnnotations;
 namespace CoderGirl_MVCMovies.Controllers
 {
     public class MovieController : Controller
@@ -24,40 +24,39 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            
-            MovieCreateViewModel createMovieViewModel = new MovieCreateViewModel();
+
+            //  MovieCreateViewModel createMovieViewModel = new MovieCreateViewModel.GetMovieCreateViewModel();
             //model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
-            return View(createMovieViewModel);
+            return View();//(createMovieViewModel);
         }
-    }
+    
 
         [HttpPost]
-        public IActionResult Create(Movie movie)
+        public IActionResult Create(MovieCreateViewModel model )
         {
-            if (String.IsNullOrWhiteSpace(movie.Name))
-            {
-                ModelState.AddModelError("Name", "Name must be included");
-            }
-            if(movie.Year < 1888 || movie.Year > DateTime.Now.Year)
+           
+            if(model.Year < 1888 || model.Year > DateTime.Now.Year)
             {
                 ModelState.AddModelError("Year", "Year is not valid");
             }
 
             if(ModelState.ErrorCount > 0)
             {
-               ViewBag.Directors = directorRepository.GetModels().Cast<Director>().ToList();
+               model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
                 return View();
             }
 
-            movieRepository.Save(movie);
+            model.Persist();
             return RedirectToAction(actionName: nameof(Index));
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            Movie movie = (Movie)movieRepository.GetById(id);
-            return View(movie);
+            MovieEditViewModel model = MovieEditViewModel.GetModel(id);
+
+           // Movie movie = (Movie)movieRepository.GetById(id);
+            return View(model);
         }
 
         [HttpPost]
