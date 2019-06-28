@@ -11,6 +11,7 @@ namespace CoderGirl_MVCMovies.Models
         [Required(ErrorMessage = "Name is needed")]
         public string Name { get; set; }
         public string DirectorName { get; set; }
+        
         public int Year { get; set; }
         public List<int> Ratings { get; set; }
         public int DirectorId { get; set; }

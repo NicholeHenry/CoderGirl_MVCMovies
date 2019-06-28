@@ -18,9 +18,14 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DirectorId" class="control-label"></label>
+                <label asp-for="DirectorName" class="control-label"></label>
+                <select asp-for="Director">
+                    @foreach (var item in Director)
+                    {
+                        <option value="@director.Id" asp-for="Director">@director.FullName</option>
+                    }
+                </select>
                 
-                <select asp-for="DirectorId" class="form-control" asp-items="Model.Directors"></select>
                 <span asp-validation-for="DirectorId" class="text-danger"></span>
             </div>
             <div class="form-group">
