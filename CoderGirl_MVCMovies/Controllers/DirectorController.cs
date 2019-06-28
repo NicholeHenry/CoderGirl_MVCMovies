@@ -28,6 +28,17 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpPost]
         public IActionResult Create(DirectorCreateViewModel model)
         {
+            if (string.IsNullOrEmpty(model.Nationality))
+            {
+                model.Nationality = "unknown";
+            }
+            if (ModelState.ErrorCount > 0)
+            {
+                return View();
+            }
+            
+
+            
             model.Persist();
             return RedirectToAction(actionName: nameof(Index));
         }
