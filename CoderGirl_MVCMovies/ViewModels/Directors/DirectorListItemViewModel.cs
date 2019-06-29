@@ -23,14 +23,14 @@ namespace CoderGirl_MVCMovies.ViewModels.Directors
             return new DirectorListItemViewModel
             {
                 Id = director.Id,
-                FullName = director.FullName,
+                Name = director.FullName,
                 BirthDate = director.BirthDate.ToShortDateString(),
                 Nationality = director.Nationality
             };
         }
 
         public int Id { get; set; }
-        public string FullName { get; set; }
+        public string Name { get; set; }
         public string BirthDate { get; set; }
         public string Nationality { get; set; }
     }
