@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using System.ComponentModel.DataAnnotations;
+
 namespace CoderGirl_MVCMovies.ViewModels.Movies
 {
     public class MovieCreateViewModel
@@ -15,15 +17,25 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
                 .GetModels()
                 .Cast<Director>()
                 .ToList();
+            
             return new MovieCreateViewModel(directors);
         }
 
+        public MovieCreateViewModel()
+        {
+
+        }
 
         public string Name { get; set; }
+        [Display(Name="Director Name")]
         public int DirectorId { get; set; }
         public string DirectorName { get; set; }
         public List<Director> Directors { get; set; }
-        public int Year { get; set; }        
+        public int Year { get; set; } 
+        public 
+
+
+
 
         private MovieCreateViewModel(List<Director> directors)
         {

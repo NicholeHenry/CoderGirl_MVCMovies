@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using CoderGirl_MVCMovies.Data;
 using CoderGirl_MVCMovies.Models;
 
-namespace CoderGirl_MVCMovies.ViewModels.MovieRating
+namespace CoderGirl_MVCMovies.ViewModels.MovieRatings
 {
-    public class MovieRatingCreateViewModel
+    public class MovieRatingsCreateViewModel
     {
         public int MovieId;
         public string MovieName { get; set; }
@@ -17,10 +17,11 @@ namespace CoderGirl_MVCMovies.ViewModels.MovieRating
         {
             MovieRating movieRating = new MovieRating
             {
+                MovieId = this.MovieId,
                 MovieName = this.MovieName,
                 Rating = this.Rating
             };
-            RepositoryFactory.GetMovieRatingRepository().Save(movieRating)
+            RepositoryFactory.GetMovieRatingRepository().Save(movieRating);
         }
     }
 }

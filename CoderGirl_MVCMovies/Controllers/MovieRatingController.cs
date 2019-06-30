@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CoderGirl_MVCMovies.Data;
 using CoderGirl_MVCMovies.Models;
+using CoderGirl_MVCMovies.ViewModels.MovieRatings;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoderGirl_MVCMovies.Controllers
@@ -22,18 +23,19 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create(int movieId)
         {
-            var movie = (Movie)movieRespository.GetById(movieId);
-            string movieName = movie.Name;
-            MovieRating movieRating = new MovieRating();
-            movieRating.MovieId = movieId;
-            movieRating.MovieName = movieName;
-            return View(movieRating);
+            /* var movie = (Movie)movieRespository.GetById(movieId);
+             string movieName = movie.Name;
+             MovieRating movieRating = new MovieRating();
+             movieRating.MovieId = movieId;
+             movieRating.MovieName = movieName;
+             return View(movieRating);*/
+            return View();
         }
 
         [HttpPost]
-        public IActionResult Create(int movieId, MovieRating movieRating)
+        public IActionResult Create(MovieRatingsCreateViewModel model)
         {
-            ratingRepository.Save(movieRating);
+            model.Persist();
             return RedirectToAction(controllerName: nameof(Movie), actionName: nameof(Index));
         }
 

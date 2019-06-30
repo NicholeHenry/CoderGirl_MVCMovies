@@ -17,6 +17,7 @@ namespace CoderGirl_MVCMovies.Controllers
         public IActionResult Index()
         {
             List<MovieListItemViewModel> movies = MovieListItemViewModel.GetMovieList();
+            
             //use list but creat special class movielistview model
             return View(movies);
         }
@@ -32,15 +33,15 @@ namespace CoderGirl_MVCMovies.Controllers
     
 
         [HttpPost]
-        public IActionResult Create(MovieCreateViewModel model )
+        public IActionResult Create(/*[FromBody]*/MovieCreateViewModel model )
         {
            
             if(model.Year < 1888 || model.Year > DateTime.Now.Year)
             {
                 ModelState.AddModelError("Year", "Year is not valid");
             }
-
-            if(ModelState.ErrorCount > 0)
+            
+            if (ModelState.ErrorCount > 0)
             {
                model.Directors = directorRepository.GetModels().Cast<Director>().ToList();
                 return View();
