@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace CoderGirl_MVCMovies.ViewModels.Directors
 {
@@ -31,6 +32,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Directors
 
         public int Id { get; set; }
         public string Name { get; set; }
+        [Display(Name="Birth Date")]
         public string BirthDate { get; set; }
         public string Nationality { get; set; }
     }

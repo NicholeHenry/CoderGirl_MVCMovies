@@ -25,14 +25,14 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
         {
 
         }
-
+        [Required(ErrorMessage ="Name must be included")]
         public string Name { get; set; }
         [Display(Name="Director Name")]
         public int DirectorId { get; set; }
         public string DirectorName { get; set; }
         public List<Director> Directors { get; set; }
         public int Year { get; set; } 
-        public 
+        
 
 
 
@@ -41,7 +41,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
         {
             this.Directors = directors;
         }
-
+        
         public void Persist()
         {
             Movie movie = new Movie
