@@ -28,7 +28,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
         public string DirectorName { get; set; }
         public int Year { get; set; }
         public  double AverageRating { get; set; }
-        public int NumberOfRatings { get; set; }
+        public double NumberOfRatings { get; set; }
         // public List<int> Ratings { get; set; }
 
 
@@ -38,8 +38,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
             this.Name = movie.Name;
             this.Year = movie.Year;
             this.DirectorName = movie.DirectorName;
-            this.AverageRating = movie.Ratings.Average();
-            this.AverageRating = movie.Ratings.Average();
+            this.AverageRating = movie.Ratings.Count > 0 ? movie.Ratings.Average() : 0.0;
             this.NumberOfRatings = movie.Ratings.Count();
 
         }

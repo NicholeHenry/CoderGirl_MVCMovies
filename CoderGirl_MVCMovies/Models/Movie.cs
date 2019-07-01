@@ -13,7 +13,7 @@ namespace CoderGirl_MVCMovies.Models
         public string DirectorName { get; set; }
         
         public int Year { get; set; }
-        public List<int> Ratings { get; set; }
+        public List<double> Ratings { get; set; }
         public int DirectorId { get; set; }
     }
 }

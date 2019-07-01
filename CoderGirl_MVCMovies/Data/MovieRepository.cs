@@ -29,7 +29,7 @@ namespace CoderGirl_MVCMovies.Data
        
         private Movie SetMovieRatings(Movie movie)
         {
-            List<int> ratings = ratingRepository.GetModels().Cast<MovieRating>()
+            List<double> ratings = ratingRepository.GetModels().Cast<MovieRating>()
                                                 .Where(rating => rating.MovieId == movie.Id)
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
