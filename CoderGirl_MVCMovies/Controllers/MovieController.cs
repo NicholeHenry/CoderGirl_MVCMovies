@@ -48,7 +48,7 @@ namespace CoderGirl_MVCMovies.Controllers
             }
 
             model.Persist();
-            return RedirectToAction(actionName: nameof(Index));
+            return RedirectToAction(controllerName: nameof(Movie),actionName: nameof(Index));
         }
 
         [HttpGet]

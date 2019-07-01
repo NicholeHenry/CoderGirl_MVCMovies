@@ -16,15 +16,14 @@ namespace CoderGirl_MVCMovies.ViewModels.MovieRatings
 
 
             public int MovieId { get; set; }
-            public string MovieName { get; set;}
+           
             public double Rating { get; set; }
-            public List<double> Ratings { get; set; }
-        
+           
 
         
 
        
-        internal void Persist()
+        public void Persist()
         {
             MovieRating movieRating = new MovieRating
             {
@@ -34,5 +33,7 @@ namespace CoderGirl_MVCMovies.ViewModels.MovieRatings
             };
             RepositoryFactory.GetMovieRatingRepository().Save(movieRating);
         }
+
+      
     }
 }
