@@ -11,57 +11,25 @@ namespace CoderGirl_MVCMovies.ViewModels.MovieRatings
 
 
     {
-        public static MovieRatingsCreateViewModel GetMovieRatingCreateViewModel(int movieId)
-
-        {
-
-            var movie = (Movie)RepositoryFactory.GetMovieRepository().GetById(movieId);
-
-            string movieName = movie.Name;
-
-            MovieRating movieRating = new MovieRating();
-
-            movieRating.MovieId = movieId;
-
-            movieRating.MovieName = movieName;
+        static IRepository ratingRepository = RepositoryFactory.GetMovieRatingRepository();
 
 
 
+            public int MovieId { get; set; }
+            public string MovieName { get; set;}
+            public int Rating { get; set; }
+            public List<int> Ratings { get; set; }
+        
 
+        
 
-
-
-            return new MovieRatingsCreateViewModel
-
-            {
-
-                MovieId = movieRating.MovieId,
-
-                MovieName = movieRating.MovieName,
-
-                Rating = movieRating.Rating,
-
-                Id = movieRating.Id,
-
-
-
-            };
-
-
-        }
-
-
-        public int Id { get; set; }
-        public int MovieId { get; set; }
-        public string MovieName { get; set; }
-        public int Rating { get; set; }
-
-        public void Persist()
+       
+        internal void Persist()
         {
             MovieRating movieRating = new MovieRating
             {
                 MovieId = this.MovieId,
-                MovieName = this.MovieName,
+                
                 Rating = this.Rating
             };
             RepositoryFactory.GetMovieRatingRepository().Save(movieRating);

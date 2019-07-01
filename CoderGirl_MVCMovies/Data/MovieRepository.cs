@@ -34,6 +34,7 @@ namespace CoderGirl_MVCMovies.Data
                                                 .Select(rating => rating.Rating)
                                                 .ToList();
             movie.Ratings = ratings;
+          
             return movie;
         }
 

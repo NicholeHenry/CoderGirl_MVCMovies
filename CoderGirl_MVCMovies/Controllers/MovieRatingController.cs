@@ -23,13 +23,14 @@ namespace CoderGirl_MVCMovies.Controllers
         [HttpGet]
         public IActionResult Create(int movieId)
         {
-            MovieRatingsCreateViewModel model = MovieRatingsCreateViewModel.GetMovieRatingCreateViewModel(movieId);
+            //MovieRatingsCreateViewModel model = MovieRatingsCreateViewModel.GetMovieRatingCreateViewModel(movieId);
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(MovieRatingsCreateViewModel model)
+        public IActionResult Create(int MovieId, MovieRatingsCreateViewModel model)
         {
+
             model.Persist();
             return RedirectToAction(controllerName: nameof(Movie), actionName: nameof(Index));
         }
