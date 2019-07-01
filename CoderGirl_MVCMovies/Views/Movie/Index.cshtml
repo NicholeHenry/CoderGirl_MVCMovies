@@ -32,13 +32,9 @@
         {
             <td>none</td>
         }
-        @if (movie.Ratings.Count <= 0)
-        {
-            <td>0</td>}
-        else
-        {
-            <td>@movie.Ratings.Count</td>
-        }
+       
+            <td>@movie.Ratings.Count()</td>
+        
         <td><a asp-controller="Movie" asp-action="Edit" asp-route-id="@movie.Id">Edit</a></td>
         <td><a asp-controller="Movie" asp-action="Delete" asp-route-id="@movie.Id">Delete</a></td>
         <td><a asp-controller="MovieRating" asp-action="Create" asp-route-id="@movie.Id">Rate</a></td>

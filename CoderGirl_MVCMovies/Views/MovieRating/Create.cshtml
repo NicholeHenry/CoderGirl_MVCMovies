@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label asp-for="MovieName" class="control-label"></label>
               
-                <input type="text" asp-for="MovieName" name="MovieName" value="@Model.MovieName" readonly/>
+                <input asp-for="MovieName" class="form-control" readonly/>
                 <span asp-validation-for="MovieName" class="text-danger"></span>
             </div>
             <div class="form-group">
