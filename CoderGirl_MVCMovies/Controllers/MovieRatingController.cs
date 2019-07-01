@@ -16,7 +16,7 @@ namespace CoderGirl_MVCMovies.Controllers
 
        public IActionResult Index()
         {
-            List<MovieRating> movieRatings = ratingRepository.GetModels().Cast<MovieRating>().ToList();
+            List<MovieRating>movieRatings = ratingRepository.GetModels().Cast<MovieRating>().ToList();
             return View(movieRatings);
         }
 

@@ -39,9 +39,20 @@ namespace CoderGirl_MVCMovies.Data
 
         private Movie SetDirectorName(Movie movie)
         {
-            Director director = (Director)baseRepository.GetById(movie.DirectorId);
-            movie.DirectorName = director.FullName;
+            Director director = (Director)directorRepository.GetById(movie.DirectorId);
+
+            if (director == null)
+            {
+                movie.DirectorName = "No director Added, yet.";
+            }
+
+            else
+            {
+                movie.DirectorName = director.FullName;
+            }
+
             return movie;
+            
         }
     }
 }
