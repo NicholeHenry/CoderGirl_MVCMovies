@@ -29,7 +29,7 @@ namespace CoderGirl_MVCMovies.ViewModels.Movies
         public int Year { get; set; }
         public  double AverageRating { get; set; }
         public double NumberOfRatings { get; set; }
-        // public List<int> Ratings { get; set; }
+        public List<double> Ratings { get; set; }
 
 
         public MovieListItemViewModel(Movie movie)
