@@ -21,7 +21,8 @@
  </div>
             <div>
                 <label asp-for="MovieName" class="control-label"></label>
-                <input asp-for="MovieName" class="control-label"readonly />
+                
+                <input readonly asp-for="MovieName" value="@Model.MovieName" />
                 <span asp-validation-for="MovieName" class="text-danger"></span>
 
             </div>
