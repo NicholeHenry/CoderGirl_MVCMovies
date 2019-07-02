@@ -16,7 +16,7 @@ namespace CoderGirl_MVCMovies.ViewModels.MovieRatings
 
 
             public int MovieId { get; set; }
-           
+           public string MovieName { get; set; }
             public double Rating { get; set; }
            
 

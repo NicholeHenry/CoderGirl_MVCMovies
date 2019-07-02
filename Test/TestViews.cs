@@ -78,7 +78,8 @@ namespace Test
             driver.Url = BASE_URL + "/movie/create";
             driver.FindElementByName("Name").SendKeys(name);
             var directorSelect = new SelectElement(driver.FindElementByName("DirectorId"));
-            directorSelect.SelectByText(director);
+           directorSelect.SelectByText(director);
+            driver.FindElementByName("Year").Clear();
             driver.FindElementByName("Year").SendKeys(year);
             var movieForm = driver.FindElementByTagName("form");
             var movieSubmit = movieForm.FindElement(By.TagName("button"));
